@@ -12,13 +12,35 @@
 
 */
 
+/**
+ * @param {Array} nums 
+ */
 function quickSort(nums) {
-  // code goes here
+  if (nums.length < 1) {
+    return nums
+  }
+
+  const lastIndex = nums.length - 1;
+  const pivot = nums[lastIndex];
+  
+  const left = [];
+  const right = [];
+
+  for (i = 0; i < lastIndex; i++) {
+    const curr = nums[i];
+    if (curr < pivot) {
+      left.push(curr);
+    } else {
+      right.push(curr);
+    }
+  }
+
+  return quickSort(left).concat(pivot, quickSort(right))
 }
 
 // unit tests
 // do not modify the below code
-test.skip("quickSort", function () {
+test("quickSort", function () {
   const input = [10, 8, 2, 1, 6, 3, 9, 4, 7, 5];
   const answer = quickSort(input);
 
