@@ -31,10 +31,7 @@ class ArrayList {
 
   pop() {
     const lastIndex = this.length - 1;
-    const element = this.store[lastIndex];
-    delete this.store[this.length];
-    this.length--;
-    return element;
+    return this.delete(lastIndex);
   }
 
   get(index) {
@@ -42,12 +39,14 @@ class ArrayList {
   }
 
   delete(index) {
+    const element = this.store[index];
     const lastIndex = this.length - 1;
     for (let i = index; i < lastIndex; i++) {
       this.store[i] = this.store[i+1];
     }
     delete this.store[lastIndex];
     this.length--;
+    return element;
   }
 }
 
