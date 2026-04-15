@@ -64,7 +64,7 @@ const findMostCommonTitle = (myId, degreesOfSeparation) => {
   // see all job titles, sorted
   jobKeys
     .map((id) => [id, jobs[id]])
-    .sort((a, b) => b - a)
+    .sort((a, b) => b[1] - a[1])
     .slice(0, 10)
     .forEach(([job, num]) => console.log(`${num} - ${job}`));
 
